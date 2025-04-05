@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Listas Encadeadas Avançadas</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="listas.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <nav class="bg-white shadow p-4 flex gap-6 justify-center text-lg font-semibold">
+    <a href="index.html" class="hover:text-blue-600">Árvores</a>
+    <a href="listas.html" class="hover:text-blue-600">Listas</a>
+    <a href="hash.html" class="hover:text-blue-600">Hash</a>
+  </nav>
+
+  <section class="p-6 max-w-5xl mx-auto">
+    <h1 class="text-5xl font-bold mb-6">Manipulação Avançada de Listas Encadeadas</h1>
+    <p class="mb-6 text-lg">Manipulação Avançada de Listas Encadeadas é um conjunto de técnicas e algoritmos que vão além das operações básicas (inserir, remover, buscar) em listas encadeadas. Essas técnicas são usadas para melhorar o desempenho em situações específicas ou para resolver problemas mais complexos de maneira eficiente.</p>
+
+    <div class="mb-12">
+      <h2 class="text-2xl font-semibold mb-2">Lista Auto-Organizável: Movimento para Frente</h2>
+      <p class="mb-6 text-lg">A lista auto-organizável com movimento para frente é uma estrutura onde, sempre que um elemento é acessado, ele é movido para o início da lista. Isso faz com que os itens mais procurados fiquem mais próximos da cabeça da lista, o que pode acelerar futuras buscas.</p>
+      <div class="mb-4">
+        <input type="number" id="inputFrente" class="p-2 border rounded" placeholder="Insira um número" />
+        <button onclick="inserirFrente()" class="ml-2 p-2 bg-blue-600 text-white rounded">Inserir</button>
+      </div>
+      <div id="listaFrente" class="bg-white rounded shadow p-4 min-h-[200px] mb-4"></div>
+      <div class="flex gap-4">
+        <button onclick="exportarCSV('frente')" class="p-2 bg-green-600 text-white rounded">Exportar CSV</button>
+        <button onclick="exportarJSON('frente')" class="p-2 bg-yellow-500 text-white rounded">Exportar JSON</button>
+        <button onclick="limparLista('frente')" class="p-2 bg-red-600 text-white rounded">Limpar</button>
+      </div>
+    </div>
+
+    <div class="mb-12">
+      <h2 class="text-2xl font-semibold mb-2">Lista Auto-Organizável: Transposição</h2>
+      <p class="mb-6 text-lg">A Lista Auto-Organizável com Transposição é uma técnica onde, sempre que um elemento é acessado, ele troca de posição com o anterior na lista. Isso faz com que os itens mais acessados fiquem mais próximos do início, mas de forma mais sutil do que no Movimento para Frente. É útil quando há acessos repetitivos a elementos, mas o objetivo não é colocá-los no início da lista. A transposição melhora as buscas sem movimentar tanto os elementos, mas pode não ser eficiente se os acessos forem aleatórios.</p>
+      <div class="mb-4">
+        <input type="number" id="inputTransposicao" class="p-2 border rounded" placeholder="Insira um número" />
+        <button onclick="inserirTransposicao()" class="ml-2 p-2 bg-blue-600 text-white rounded">Inserir</button>
+      </div>
+      <div id="listaTransposicao" class="bg-white rounded shadow p-4 min-h-[200px] mb-4"></div>
+      <div class="flex gap-4">
+        <button onclick="exportarCSV('transposicao')" class="p-2 bg-green-600 text-white rounded">Exportar CSV</button>
+        <button onclick="exportarJSON('transposicao')" class="p-2 bg-yellow-500 text-white rounded">Exportar JSON</button>
+        <button onclick="limparLista('transposicao')" class="p-2 bg-red-600 text-white rounded">Limpar</button>
+      </div>
+    </div>
+
+    <div class="mb-12">
+      <h2 class="text-2xl font-semibold mb-2">Skip List</h2>
+      <p class="mb-4">A Skip List é uma estrutura de dados probabilística que acelera buscas, inserções e remoções em listas ordenadas. Ela possui múltiplos níveis de listas encadeadas, com cada nível superior atuando como uma "ponte" para pular elementos, permitindo buscas mais rápidas. A altura de cada elemento nos níveis superiores é determinada aleatoriamente.</p>
+      <div class="mb-4">
+        <input type="number" id="inputSkip" class="p-2 border rounded" placeholder="Insira um número" />
+        <button onclick="inserirSkip()" class="ml-2 p-2 bg-blue-600 text-white rounded">Inserir</button>
+      </div>
+      <div id="listaSkip" class="bg-white rounded shadow p-4 min-h-[200px] mb-4"></div>
+      <div class="flex gap-4">
+        <button onclick="exportarCSV('skip')" class="p-2 bg-green-600 text-white rounded">Exportar CSV</button>
+        <button onclick="exportarJSON('skip')" class="p-2 bg-yellow-500 text-white rounded">Exportar JSON</button>
+        <button onclick="limparLista('skip')" class="p-2 bg-red-600 text-white rounded">Limpar</button>
+      </div>
+    </div>
+  </section>
+  <script src="listas.js"></script>
+</body>
+</html>

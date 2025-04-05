@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Árvores</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="arvore.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <nav class="bg-white shadow p-4 flex gap-6 justify-center text-lg font-semibold">
+    <a href="index.html" class="hover:text-purple-600 font-bold">Árvores</a>
+    <a href="listas.html" class="hover:text-purple-600">Listas</a>
+    <a href="hash.html" class="hover:text-purple-600">Hash</a>
+  </nav>
+
+  <main class="p-6 max-w-4xl mx-auto space-y-28">
+
+    <section>
+      <h1 class="text-5xl font-bold mb-4">Árvores</h1>
+      <p class="text-lg mt-2">
+        São estruturas de dados fundamentais na ciência da computação, usadas para organizar informações de forma hierárquica. Elas se assemelham a uma árvore invertida: começam com um nó raiz, que é o primeiro elemento, e se ramificam em nós filhos, formando diferentes níveis. Cada nó pode conter um valor e ligações com outros nós, representando relações entre os dados. 
+        Existem diversos tipos de árvores com propósitos específicos, como:
+      </p>
+      <ul class="list-disc list-inside mt-4 text-gray-700">
+        <li><a href="#bst" class="text-purple-700 hover:underline"><strong>BST</strong> (Árvore Binária de Busca)</a></li>
+        <li><a href="#avl" class="text-purple-700 hover:underline"><strong>AVL</strong> (Árvore Binária de Busca Balanceada)</a></li>
+        <li><a href="#b" class="text-purple-700 hover:underline"><strong>Árvore B</strong> (usada em sistemas de banco de dados)</a></li>
+        <li><a href="#fibonacci" class="text-purple-700 hover:underline"><strong>Árvore de Fibonacci</strong> (utilizada em filas de prioridade)</a></li>
+      </ul>
+    </section>
+
+    <section id="bst">
+      <h2 class="text-2xl font-semibold mb-2">Árvore Binária de Busca (BST)</h2>
+      <p class="mb-4 mt-1">Uma BST é uma árvore onde cada nó tem no máximo dois filhos, e os valores à esquerda são menores que o nó, e os da direita são maiores. O que torna essa estrutura especial é a regra de ordenação que ela segue: todos os nós da subárvore esquerda contêm valores menores que o valor do nó atual, enquanto os da subárvore direita contêm valores maiores. Isso permite que a árvore fique automaticamente organizada à medida que os dados são inseridos.  Ela permite uma busca rápida, pois, a cada comparação, é possível descartar metade dos dados, o que reduz bastante o tempo necessário para encontrar um valor.</p>
+      <input type="number" id="valor-bst" class="p-2 border rounded" placeholder="Insira um número" />
+      <button onclick="inserirValor('bst')" class="ml-2 p-2 bg-blue-600 text-white rounded">Inserir</button>
+      <div id="arvore-bst" class="border p-4 bg-white rounded shadow min-h-[300px] mt-4"></div>
+      <div class="mt-4 flex gap-4">
+        <button onclick="exportarCSV('bst')" class="p-2 bg-green-600 text-white rounded">Exportar CSV</button>
+        <button onclick="exportarJSON('bst')" class="p-2 bg-yellow-500 text-white rounded">Exportar JSON</button>
+        <button onclick="limparArvore('bst')" class="btn-limpar">Limpar</button>
+      </div>
+    </section>
+
+    <section id="avl">
+      <h2 class="text-2xl font-semibold mb-2">Árvore AVL</h2>
+      <p class="mb-4">
+        Uma Árvore AVL é uma variação da árvore binária de busca (BST) que garante que a árvore esteja sempre balanceada. Em uma AVL, além da regra de ordenação da BST — onde os valores à esquerda são menores e os à direita são maiores —, existe uma condição extra: a diferença de altura entre as subárvores esquerda e direita de qualquer nó não pode ser maior que 1.
+      </p>
+      <input type="number" id="valor-avl" class="p-2 border rounded" placeholder="Insira um número" />
+      <button onclick="inserirValor('avl')" class="ml-2 p-2 bg-blue-600 text-white rounded">Inserir</button>
+      <div id="arvore-avl" class="border p-4 bg-white rounded shadow min-h-[300px] mt-4"></div>
+      <div class="mt-4 flex gap-4">
+        <button onclick="exportarCSV('avl')" class="p-2 bg-green-600 text-white rounded">Exportar CSV</button>
+        <button onclick="exportarJSON('avl')" class="p-2 bg-yellow-500 text-white rounded">Exportar JSON</button>
+        <button onclick="limparArvore('avl')" class="btn-limpar">Limpar</button>
+      </div>
+    </section>
+
+    <section id="b">
+      <h2 class="text-2xl font-semibold mb-2">Árvore B</h2>
+      <p class="mb-4">
+        Uma Árvore B é usada principalmente em sistemas que lidam com grandes volumes de dados, como bancos de dados e sistemas de arquivos. Ao contrário das árvores binárias, onde cada nó tem no máximo dois filhos, em uma árvore B cada nó pode ter vários filhos e armazenar múltiplos valores.
+      </p>
+      <input type="number" id="valor-b" class="p-2 border rounded" placeholder="Insira um número" />
+      <button onclick="inserirValor('b')" class="ml-2 p-2 bg-blue-600 text-white rounded">Inserir</button>
+      <div id="arvore-b" class="border p-4 bg-white rounded shadow min-h-[300px] mt-4"></div>
+      <div class="mt-4 flex gap-4">
+        <button onclick="exportarCSV('b')" class="p-2 bg-green-600 text-white rounded">Exportar CSV</button>
+        <button onclick="exportarJSON('b')" class="p-2 bg-yellow-500 text-white rounded">Exportar JSON</button>
+        <button onclick="limparArvore('b')" class="btn-limpar">Limpar</button>
+      </div>
+    </section>
+
+    <section id="fibonacci">
+      <h2 class="text-2xl font-semibold mb-2">Árvore de Fibonacci</h2>
+      <p class="mb-4">
+        A Árvore de Fibonacci derivada do conceito de montes (heaps), e é usada principalmente em algoritmos de otimização e estruturas como filas de prioridade. Ela é chamada assim porque seu comportamento de crescimento está relacionado com a sequência de Fibonacci.O que torna essa estrutura especial é que ela permite operações eficientes de união entre árvores e mantém um bom desempenho mesmo com muitas operações consecutivas. Em uma Árvore de Fibonacci, os nós são organizados em uma coleção de árvores enraizadas (como um conjunto de heaps), e o número de filhos de cada nó é controlado para manter a estrutura equilibrada ao longo do tempo.
+      </p>
+      <input type="number" id="valor-fibonacci" class="p-2 border rounded" placeholder="Insira um número" />
+      <button onclick="inserirValor('fibonacci')" class="ml-2 p-2 bg-blue-600 text-white rounded">Inserir</button>
+      <div id="arvore-fibonacci" class="border p-4 bg-white rounded shadow min-h-[300px] mt-4"></div>
+      <div class="mt-4 flex gap-4">
+        <button onclick="exportarCSV('fibonacci')" class="p-2 bg-green-600 text-white rounded">Exportar CSV</button>
+        <button onclick="exportarJSON('fibonacci')" class="p-2 bg-yellow-500 text-white rounded">Exportar JSON</button>
+        <button onclick="limparArvore('fibonacci')" class="btn-limpar">Limpar</button>
+      </div>
+    </section>
+
+  </main>
+  <script src="arvore.js"></script>
+</body>
+</html>
